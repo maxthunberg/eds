@@ -1,0 +1,33 @@
+
+<div class="bx--col-xs-12 bx--col-md-6 bx--col-lg-4 section-3col--card">
+  <a class="card-link" href="<?php echo get_permalink( $post->ID ); ?>">
+
+    <div class="card-sm interactive">
+
+      <div class="card-img image card-half">
+        <div class="img-container">
+          <img class="featured-image" src="<?php the_post_thumbnail_url(); ?>"/>
+        </div>
+      </div>
+      <div class="card-content card-half">
+        <div class="text-container">
+
+          <?php if ($post->post_parent == 86) :?>
+          <h3><?php echo the_title();?></h3>
+        <?php else :?>
+          <h3 class="card-learn"><?php echo the_title();?></h3>
+        <?php endif;?>
+
+        </div>
+
+        <?php if ($post->post_parent !== 86) :?>
+
+      <?php endif;?>
+
+      </div>
+
+    </div>
+  </a>
+
+
+</div>

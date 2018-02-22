@@ -1,0 +1,45 @@
+<?php
+$file = get_template_directory() . '/phtml-components/cards/card-sm--icons.phtml';
+$theHeading = array('advantage_one_heading', 'advantage_two_heading', 'advantage_three_heading');
+$theParagraf = array('advantage_one_paragraf', 'advantage_two_paragraf', 'advantage_three_paragraf');
+$theImage = array('advantage_one_image', 'advantage_two_image', 'advantage_three_image');
+$theBG = array('advantage_one_background', 'advantage_two_background', 'advantage_three_background');
+
+
+function includeAdvantageS($file, $theHeadingS, $theParagrafS, $theImageS, $theBG) {
+    include($file);
+}
+
+?>
+
+<nav data-tabs class="bx--tabs tabnav industry" role="navigation">
+  <div class="bx--tabs-trigger" tabindex="0">
+    <a href="javascript:void(0)" class="bx--tabs-trigger-text" tabindex="-1"></a>
+    <svg width="10" height="5" viewBox="0 0 10 5" fill-rule="evenodd">
+      <path d="M10 0L5 5 0 0z"></path>
+    </svg>
+  </div>
+  <ul class="bx--tabs__nav bx--tabs__nav--hidden" role="tablist">
+    <li id="industrytab-1" class="bx--tabs__nav-item bx--tabs__nav-item--selected" data-target=".tab-1" role="presentation">
+      <a id="tab-link-1" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-1" aria-selected="true"><h1>Automotive</h1></a>
+    </li>
+    <li id="industrytab-2" class="bx--tabs__nav-item" data-target=".tab-2" role="presentation">
+      <a id="tab-link-2" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-2" aria-selected="false">Fashion & Lifestyle</a>
+    </li>
+    <li id="industrytab-3" class="bx--tabs__nav-item" data-target=".tab-3" role="presentation">
+      <a id="tab-link-3" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-3" aria-selected="false">Healthcare</a>
+    </li>
+    <li id="industrytab-4" class="bx--tabs__nav-item" data-target=".tab-4" role="presentation">
+      <a id="tab-link-4" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-4" aria-selected="true">High Tech</a>
+    </li>
+    <li id="industrytab-5" class="bx--tabs__nav-item" data-target=".tab-5" role="presentation">
+      <a id="tab-link-5" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-5" aria-selected="false">Industrial</a>
+    </li>
+    <li id="industrytab-6" class="bx--tabs__nav-item" data-target=".tab-6" role="presentation">
+      <a id="tab-link-6" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-6" aria-selected="false">Maritime</a>
+    </li>
+    <li id="industrytab-7" class="bx--tabs__nav-item" data-target=".tab-7" role="presentation">
+      <a id="tab-link-7" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="tab-panel-7" aria-selected="false">Passport & Visa</a>
+    </li>
+  </ul>
+</nav>

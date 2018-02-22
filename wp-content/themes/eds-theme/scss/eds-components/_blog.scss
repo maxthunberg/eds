@@ -1,0 +1,145 @@
+.blog {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: $ui-02;
+  position: relative;
+  // overflow: hidden;
+  .blog-image {
+    background-position: center center;
+    background-size: cover;
+    order: 2;
+  }
+  .fw--grid {
+    height: 100%;
+  }
+  .fw--row {
+    height: 100%;
+  }
+  .blog-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 4rem 3rem 4rem 6rem;
+    order: 1;
+  }
+  .blog-btn-next, .blog-btn-prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    background-color: $ui-01;
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    bottom: auto;
+    cursor: pointer!important;
+    box-shadow: $box-shadow--overlay;
+    transition: $transition-default;
+    .arrow--next, .arrow--prev {
+      height: 2rem;
+      width: 2rem;
+      cursor: pointer!important;
+    }
+    &:hover {
+      box-shadow: $box-shadow--temporary-nav;
+      transition: $transition-default;
+    }
+    &:active {
+      box-shadow: $box-shadow--raised;
+      transition: $transition-default;
+    }
+    &:focus {
+      box-shadow: $box-shadow--temporary-nav;
+      transition: $transition-default;
+    }
+  }
+  .blog-btn-next {
+    right: 0;
+  }
+  .blog-btn-prev {
+    left: 0;
+    .arrow--prev {
+      transform: rotate(180deg);
+    }
+  }
+  h6, h3 {
+    cursor: default;
+  }
+}
+
+.swiper-container {
+  box-shadow: $box-shadow--temporary-nav;
+}
+.swiper-slide {
+  height: auto;
+}
+
+.meta-post {
+  font-weight: 400;
+}
+
+
+@media screen and (max-width: $mq-sm) {
+  .blog {
+
+    p {
+      display: none;
+    }
+    .blog-content {
+    padding: 2rem 2rem 6rem 2rem;
+    order: 2;
+  }
+  .blog-btn-next, .blog-btn-prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    background-color: $ui-01;
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    bottom: auto;
+    cursor: pointer!important;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    transition: $transition-default;
+    .arrow--next, .arrow--prev {
+      height: 2rem;
+      width: 2rem;
+      cursor: pointer!important;
+    }
+    &:hover {
+      box-shadow: 0 0 0 0 rgba(0,0,0,0);
+      transition: $transition-default;
+    }
+    &:active {
+      box-shadow: 0 0 0 0 rgba(0,0,0,0);
+      transition: $transition-default;
+    }
+    &:focus {
+      box-shadow: 0 0 0 0 rgba(0,0,0,0);
+      transition: $transition-default;
+    }
+  }
+  .blog-btn-next, .blog-btn-prev {
+    width: 50%;
+    bottom: 0;
+  }
+  .blog-btn-next {
+    right: 0;
+    border-left: 1px solid $ui-03;
+  }
+  .blog-btn-prev {
+    left: 0;
+    .arrow--prev {
+      transform: rotate(180deg);
+    }
+  }
+  .blog-image {
+    height: 192px;
+    order: 1;
+  }
+  }
+
+
+}

@@ -1,0 +1,31 @@
+<div class="services bg-02 section-default">
+
+    <div class="bx--grid">
+      <div class="bx--row">
+        <?php
+        $args = array(
+            'post_parent' => $post->ID,
+            'post_type' => 'page',
+            'orderby' => 'menu_order'
+
+        );
+
+        $child_query = new WP_Query( $args );
+        ?>
+
+        <?php while ( $child_query->have_posts() ) : $child_query->the_post();
+
+            include( get_template_directory() . '/phtml-components/cards/card-sm.phtml');
+
+        endwhile; ?>
+
+        <?php
+        wp_reset_postdata();?>
+
+
+
+      </div>
+
+    </div>
+
+</div>

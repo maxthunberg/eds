@@ -1,0 +1,44 @@
+<div class="hero home hero-lg" style="background-image: url(<?php the_field('hero_image');?>">
+    <div class="bx--col-xs-12 bx--col-md-12 hero-content">
+
+        <h6 class="bx--type-delta type-white"><?php the_field('hero_subheading');?></h6>
+        <h2 class="bx--type-giga type-white"><?php the_field('hero_heading');?></h2>
+
+              <!-- <h2 class="bx--type-giga type-white">   -->
+              <!-- <div class="container">
+                <div class="letters">
+                  <div class="letter">1</div>
+                  <div class="letter">2</div>
+                  <div class="letter">3</div>
+                  <div class="letter">4</div>
+                  <div class="letter">5</div>
+                  <div class="letter">6</div>
+                  <div class="letter">7</div>
+                  <div class="letter">8</div>
+                </div>
+              </div> -->
+
+              <!-- </h2> -->
+        <!-- <a href="tel:+4670-4081643" data-rel="external"> -->
+          <button class="bx--btn bx--btn--secondary-white" type="button" data-modal-target="#nofooter"><?php the_field('hero_button_label');?></button>
+        <!-- </a> -->
+
+          <?php include( get_template_directory() . '/phtml-components/modal/modal.phtml');?>
+
+        <div class="scrolldown">
+            <a class="scrolldown-link" id="services" href="#"><?php the_field('hero_scroll_link');?></a>
+            <svg class="scrolldown-arrow" width="10" height="5" viewBox="0 0 10 5" fill-rule="evenodd">
+              <path d="M10 0L5 5 0 0z"></path>
+            </svg>
+        </div>
+
+    </div>
+    <div class="hero-video">
+      <div class="overlay"></div>
+      <video autoplay muted loop class="hero-video--video">
+        <source src="http://localhost:8888/wp-content/uploads/2018/02/hero-truck.mp4" type="video/mp4">
+      </video>
+    </div>
+
+</div>
+<a name="services"/>

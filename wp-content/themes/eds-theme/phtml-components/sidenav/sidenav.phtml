@@ -1,0 +1,32 @@
+<div class="sidenav-bg"></div>
+  <div class="sidenav">
+    <div class="sidenav-top">
+      <div class="close">
+        <div class="close-line line-1"></div>
+        <div class="close-line line-2"></div>
+      </div>
+    </div>
+
+    <?php if (function_exists(clean_sidebar_menu())) clean_sidebar_menu() ?>
+      <div class="sidenav-bottom">
+        <button class="bx--btn bx--btn--primary btn" type="button"><?php the_field('cta_btn_label', 'option');?></button>
+
+      <!--dropdown languages-->
+      <ul data-dropdown data-value class="bx--dropdown languages" tabindex="0">
+        <li class="bx--dropdown-text"><?php the_field('language_label', 'option');?></li>
+        <svg class="bx--dropdown__arrow" width="10" height="5" viewBox="0 0 10 5" fill-rule="evenodd">
+          <path d="M10 0L5 5 0 0z"></path>
+        </svg>
+        <li>
+          <ul class="bx--dropdown-list">
+            <li data-option data-value="Swedish" class="bx--dropdown-item"><a class="bx--dropdown-link" href="javascript:void(0)"><?php the_field('language_item_one', 'option');?></a></li>
+            <li data-option data-value="English" class="bx--dropdown-item"><a class="bx--dropdown-link" href="javascript:void(0)"><?php the_field('language_item_two', 'option');?></a></li>
+          </ul>
+        </li>
+      </ul>
+
+      </div>
+
+    </div>
+
+  </div>

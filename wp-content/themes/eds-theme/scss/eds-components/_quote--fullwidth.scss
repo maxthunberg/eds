@@ -1,0 +1,23 @@
+.quote--fullwidth {
+  background-color: $brand-02;
+  padding: 128px 0;
+  box-shadow: $box-shadow--temporary-nav--inverted;
+  position: relative;
+  .quote-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .quote, .author {
+    font-size: rem(24px);
+    text-align: center;
+    font-weight: 300;
+    color: $color__white;
+  }
+
+  .author {
+    margin-top: rem(24px);
+    font-size: rem(18px);
+  }
+}

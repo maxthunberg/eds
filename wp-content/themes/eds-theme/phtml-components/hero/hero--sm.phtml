@@ -1,0 +1,33 @@
+<div class="hero hero-sm" title="<?=$title_hero_img?>" style="background-image: url(
+  <?php if (get_the_ID(20)) {
+            echo get_field('hero_image');
+
+        } else  {
+          the_post_thumbnail_url();
+
+        }
+      ?>
+
+  )">
+  <div class="overlay"></div>
+
+
+
+    <div class="bx--col-xs-12 bx--col-md-12 hero-content">
+      <?php if ( is_singular('post') ) :?>
+            <h2 class="bx--type-beta type-white">
+      <?php else :?>
+            <h2 class="bx--type-giga type-white">
+      <?php endif;?>
+          <?php if ( get_the_ID() == 158 ) {
+                echo single_post_title();
+
+              } else if (get_the_ID() == 507 ) {
+
+              } else {
+                  echo esc_html( get_the_title() );
+                }
+              ?>
+        </h2>
+    </div>
+</div>

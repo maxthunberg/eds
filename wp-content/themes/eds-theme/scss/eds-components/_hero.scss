@@ -1,0 +1,116 @@
+.hero-lg {
+  height: 100vh;
+
+}
+.hero-sm {
+  height: rem(320px);
+
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  overflow: hidden;
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $brand-02;
+    opacity: .3;
+    top: 0;
+    left: 0;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    z-index: 2;
+  }
+  h2 {
+    text-align: center;
+    color: $ui-01;
+
+  }
+  h6 {
+    color: $ui-01;
+  }
+  .bx--btn {
+    margin-top: 1rem;
+  }
+  .scrolldown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 1rem;
+    transition: $transition-default;
+
+    &:hover {
+      opacity: .9;
+      transition: $transition-default;
+    }
+    .scrolldown-link {
+      font-weight: 300;
+      color: $ui-01;
+      text-decoration: none;
+      padding: .5rem;
+    }
+    .scrolldown-arrow {
+      fill: $ui-01;
+    }
+  }
+}
+
+.transportation {
+  transition: background-image $transition--base $carbon--standard-easing;
+  transition: background-image .5s $carbon--standard-easing;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $brand-02;
+      opacity: .3;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .hero-video--video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-height: 100%;
+        min-width: 100%
+    }
+}
+
+
+
+@media screen and (max-width: $mq-xs) {
+
+  .hero {
+    .hero-content {
+      width: 80%;
+
+    }
+  }
+}

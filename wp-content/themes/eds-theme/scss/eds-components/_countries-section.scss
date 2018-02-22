@@ -1,0 +1,13 @@
+.countries {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $brand-02;
+  height: 100%;
+  width: 100%;
+  .country {
+    background-color: red;
+    height: 100%;
+    width: 25%;
+  }
+}

@@ -1,0 +1,114 @@
+.sidenav {
+    position: fixed;
+    top:0;
+    right:-256px;
+    width: 256px;
+    height: 120vh;
+    background: $ui-01;
+    z-index: 8000;
+    box-shadow: $box-shadow--temporary-nav;
+    overflow: hidden;
+    transition: right $transition--base $carbon--standard-easing;
+      .bx--dropdown {
+      height: 2.5rem;
+    }
+      .bx--dropdown-text {
+      height: 2.5rem;
+      padding-top: .6875rem;
+    }
+    .bx--dropdown__arrow{
+      top: 1.125rem;
+    }
+    .sidenav-top {
+      width: 100%;
+      height: 48px;
+      border-bottom: 1px solid $brand-02;
+      .close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top:0.5rem;
+        right: 1.5rem;
+        height: 2rem;
+        width: 2rem;
+        &:hover {
+          cursor: pointer;
+        }
+        .close-line {
+          position: absolute;
+          height: 2px;
+          width: 24px;
+          background-color: $brand-01;
+          transition: $transition-default;
+
+        }
+        .hover {
+          background-color: $brand-02;
+          transition: $transition-default;
+        }
+        .line-1 {
+          transform: rotate(-45deg);
+        }
+        .line-2 {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .sidenav-bottom {
+        .btn {
+          width: 100%;
+        }
+      }
+  }
+
+  .sidenav.active{
+      right:0px;
+      transition: right $transition--base $carbon--standard-easing;
+  }
+    .sidenav-bg {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: $color-black;
+      opacity: 0;
+      z-index: -100;
+      transition: opacity $transition--base $carbon--standard-easing;
+    }
+
+    .sidenav-bg.active {
+        opacity: .3;
+        z-index: 7999;
+        transition: opacity $transition--base $carbon--standard-easing;
+      }
+
+
+  .left-nav-list__item-plus {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1rem;
+    width: 1rem;
+    .icn-plus--line-1 {
+      position: absolute;
+      height: 1px;
+      width: 16px;
+      background-color: $brand-01;
+    }
+    .icn-plus--line-2 {
+      position: absolute;
+      opacity: 1;
+      height: 16px;
+      width: 1px;
+      background-color: $brand-01;
+      transition: $transition-default;
+    }
+
+    .icn-plus--line-2.active {
+      opacity: 0;
+      height: 16px;
+      transition: $transition-default;
+    }
+  }

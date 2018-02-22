@@ -1,0 +1,135 @@
+
+.card-sm {
+  display: flex;
+  flex-direction: column;
+  box-shadow: $box-shadow--raised;
+  background-color: $color__white;
+  padding: 0;
+
+  .card-half {
+    display: flex;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 192px;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.5rem 2rem;
+    min-height: rem(106px);
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      .card-learn {
+        font-weight: 400;
+        font-size: 1rem;
+      }
+
+      h3 {
+        color: $brand-01;
+        margin-bottom: .5rem;
+
+      }
+      p {
+        color: $brand-02;
+      }
+
+    }
+    .btn-container {
+      height: rem(40px);
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      .card--btn:first-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+}
+
+
+// .card-sm.interactive {
+//
+//   .card-content {
+//
+//     .text-container {
+//       margin-bottom: 0;
+//
+//       h3 {
+//         margin-bottom: .5rem;
+//       }
+//       p {
+//         color: $brand-02;
+//       }
+//
+//     }
+//
+//   }
+//
+// }
+
+.img-container {
+  width: 100%;
+  height: 100%;
+  .featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.img-container--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  background-color: $brand-02;
+  background-position: center center;
+  background-size: cover;
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    opacity: .6;
+    background-color: $brand-02;
+  }
+  .icon {
+    width: auto;
+    height: 100%;
+    z-index: 1;
+  }
+}
+
+.custom-object-fit {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  .featured-image {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: $mq-md){
+  .card-sm, .card-sm--services {
+    margin: 0 0 0 0;
+  }
+}
+
+@media screen and (max-width: $mq-sm) {
+  .navbar {
+    display: none;
+  }
+}

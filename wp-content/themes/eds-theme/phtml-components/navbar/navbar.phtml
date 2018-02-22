@@ -1,0 +1,43 @@
+<nav class="navbar start">
+  <!--left section -->
+  <div class="navbar-left">
+    <a class="preload-link" href="/"><img class="eds-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/icons/eds-logo--white.png" /></a>
+
+    <div class="fadeout-mq--sm">
+      <?php wp_nav_menu( array( 'theme_location' => 'main','fallback_cb'=> 'fallbackmenu1' ) ); ?>
+    </div>
+  </div>
+
+  <!--right section-->
+  <div class="navbar-right">
+    <!-- <a href="tel:+4670-4081643" data-rel="external"> -->
+      <button class="bx--btn bx--btn--secondary-white  bx--btn--sm btn fadeout-mq--xs" type="button" data-modal-target="#nofooter-navbar"><?php the_field('cta_btn_label', 'option');?></button>
+    <!-- </a> -->
+
+      <?php include( get_template_directory() . '/phtml-components/modal/modal--navbar.phtml');?>
+
+  <!--dropdown languages-->
+  <ul data-dropdown data-value class="bx--dropdown languages fadeout-mq--xs" tabindex="0">
+    <li class="bx--dropdown-text"><?php the_field('language_label', 'option');?></li>
+    <svg class="bx--dropdown__arrow" width="10" height="5" viewBox="0 0 10 5" fill-rule="evenodd">
+      <path d="M10 0L5 5 0 0z"></path>
+    </svg>
+    <li>
+      <ul class="bx--dropdown-list">
+        <li data-option data-value="Swedish" class="bx--dropdown-item"><a class="bx--dropdown-link" href="javascript:void(0)"><?php the_field('language_item_one', 'option');?></a></li>
+        <li data-option data-value="English" class="bx--dropdown-item"><a class="bx--dropdown-link" href="javascript:void(0)"><?php the_field('language_item_two', 'option');?></a></li>
+      </ul>
+    </li>
+  </ul>
+  <!-- Hamburger Icon -->
+  <div class="hamburger">
+    <div class="hamburger-line line-1"></div>
+    <div class="hamburger-line line-2"></div>
+    <div class="hamburger-line line-3"></div>
+  </div>
+
+
+  </div>
+
+
+</nav>

@@ -1,0 +1,159 @@
+<?php
+
+$i = 0;
+
+$service = new WP_Query( array( 'post_type' => 'service', 'posts_per_page' => -1 ) );
+$faq = new WP_Query( array( 'post_type' => 'faq', 'posts_per_page' => -1 ) );?>
+
+  <div id="tab-panel-3" class="tab-3" role="tabpanel" aria-labelledby="tab-link-3" aria-hidden="false" hidden>
+
+    <div class="section-2rem">
+        <?php if ( $service->have_posts() ) : while ( $service->have_posts() ) :
+
+        $service->the_post();
+
+        $intro = get_field('intro_paragraf');
+
+        $city_one = get_field('city_one');
+        $hours_one = get_field('hours_one');
+        $city_two = get_field('city_two');
+        $hours_two = get_field('hours_two');
+        $city_three = get_field('city_three');
+        $hours_three = get_field('hours_three');
+
+        $section_two_image = get_field('section_two_image');
+        $section_two_heading = get_field('section_two_heading');
+        $section_two_paragraf = get_field('section_two_paragraf');
+
+        $section_three_mainheading = get_field('section_three_main_heading');
+
+        $section_three_icon_one = get_field('section_three_icon_one');
+        $section_three_heading_one = get_field('section_three_heading_one');
+        $section_three_paragraf_one = get_field('section_three_paragraf_one');
+
+        $section_three_icon_two = get_field('section_three_icon_two');
+        $section_three_heading_two = get_field('section_three_heading_two');
+        $section_three_paragraf_two = get_field('section_three_paragraf_two');
+
+        $section_three_icon_three = get_field('section_three_icon_three');
+        $section_three_heading_three= get_field('section_three_heading_three');
+        $section_three_paragraf_three = get_field('section_three_paragraf_three');
+
+        $faq_main_heading = get_field('faq_main_heading');
+
+        $selectservice = get_field('select_service');
+
+        if ($selectservice == 'industry_healthcare'):
+        ?>
+
+        <!--If intro should be one column paragraf-->
+          <div class="bx--grid section-default">
+            <div class="bx--row row--center">
+              <div class="bx--col-xs-12 bx--col-md-8 bx--col-lg-6 section-1col"><p><?=$intro;?></p></div>
+            </div>
+          </div>
+
+          <!--The ciites and time three columns-->
+          <?php include( get_template_directory() . '/phtml-components/cities/cities.phtml');?>
+
+          <!--SECOND PARAGRAF SECTION-->
+          <div class="fw--grid bg-01">
+            <div class="fw--row">
+
+              <div class="fw--col-md-6 fw--col-sm-12 section-fw bg-img" style="background-image: url(<?=$section_two_image;?>"></div>
+              <div class="fw--col-md-6 fw--col-sm-12 section-fw ">
+                <h3 class="bx--type-beta revealer-0"><?=$section_two_heading;?></h3>
+                <p class="revealer-100"><?=$section_two_paragraf;?></p>
+              </div>
+
+            </div>
+          </div>
+
+          <!--Advantages Services-->
+          <?php include( get_template_directory() . '/phtml-components/advantages/advantages--icons.phtml');?>
+
+
+          <!--FAQ section-->
+          <div class="bx--grid section-default bg-01 faq air">
+            <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 section-1col"><h3 class="bx--type-beta"><?=$faq_main_heading;?></h3></div>
+              <div class="bx--row">
+                      <div class="bx--col-xs-12 bx--col-md-6 section-2col">
+
+                        <ul data-accordion class="bx--accordion">
+                                <?php endif; endwhile; endif;?>
+
+                    <!--The Loop-->
+                    <?php if ( $faq->have_posts() ) : while ( $faq->have_posts() ) :
+
+                          $faq->the_post();
+                          $question = get_field('question');
+                          $answer = get_field('answer');
+                          $select = get_field('select');
+                          $number = ++$i;
+
+                          if ($select == 'industry_healthcare'):
+
+                          ?>
+
+                          <li data-accordion-item class="bx--accordion__item">
+                            <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane<?php echo $number;?>">
+                              <svg class="bx--accordion__arrow" width="5" height="10" viewBox="0 0 5 10" fill-rule="evenodd">
+                                <path d="M0 0L5  5 0 10z"></path>
+                              </svg>
+                              <p class="bx--accordion__title"><?=$question;?></p>
+                            </button>
+                            <div id="pane<?php echo $number;?>" class="bx--accordion__content">
+                              <p><?=$answer;?></p>
+                            </div>
+                          </li>
+
+                      <?php endif; endwhile; endif;?>
+
+                    </ul>
+                  </div>
+
+                  <div class="bx--col-xs-12 bx--col-md-6 section-2col">
+
+                    <ul data-accordion class="bx--accordion">
+
+
+                <!--FAQ LOOP-->
+                <?php if ( $faq->have_posts() ) : while ( $faq->have_posts() ) :
+
+                      $faq->the_post();
+                      $question = get_field('question');
+                      $answer = get_field('answer');
+                      $select = get_field('select');
+                      $number = ++$i;
+
+                      if ($select == 'industry_healthcare_col2'):
+
+                      ?>
+
+                      <li data-accordion-item class="bx--accordion__item">
+                        <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane<?php echo $number;?>">
+                          <svg class="bx--accordion__arrow" width="5" height="10" viewBox="0 0 5 10" fill-rule="evenodd">
+                            <path d="M0 0L5  5 0 10z"></path>
+                          </svg>
+                          <p class="bx--accordion__title"><?=$question;?></p>
+                        </button>
+                        <div id="pane<?php echo $number;?>" class="bx--accordion__content">
+                          <p><?=$answer;?></p>
+                        </div>
+                      </li>
+
+                  <?php endif; endwhile; endif;?>
+
+                </ul>
+              </div>
+
+
+          </div>
+          </div>
+
+
+          <!-- Contact Section -->
+          <?php //include( get_template_directory() . '/phtml-components/contact-form/contact-form.phtml');?>
+
+    </div>
+  </div>

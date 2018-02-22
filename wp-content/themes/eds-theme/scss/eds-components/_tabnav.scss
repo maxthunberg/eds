@@ -1,0 +1,36 @@
+.tabnav {
+  position: absolute;
+  top:0;
+  background: $ui-01;
+  z-index: 5999;
+  // background: $brand-03;
+  box-shadow: $box-shadow--raised;
+  transition: box-shadow 0.250s $carbon--standard-easing;
+}
+
+.sticky-tabnav {
+  position: fixed!important;
+  top: 48px;
+  transition: $transition-default;
+  z-index: 5999;
+  // box-shadow: $box-shadow--temporary-nav;
+  box-shadow: $box-shadow--sticky-nav;
+  transition: box-shadow 0.250s $carbon--standard-easing;
+}
+
+
+
+.tab-content {
+  position: relative;
+}
+
+@media screen and (min-width: $mq-sm) and (max-width: $mq-md) {
+  .bx--tabs__nav-item {
+    font-size: .75rem;
+  }
+}
+@media screen and (max-width: $mq-sm) {
+  .bx--tabs__nav {
+    margin-top:48px;
+  }
+}

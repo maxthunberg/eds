@@ -1,0 +1,17 @@
+<div class="fw--grid bg-01">
+  <div class="fw--row">
+
+      <div class="fw--col-sm-12 fw--col-md-6 section-fw inrush">
+          <div class="inrush-text">
+            <h3><?php the_field('contact_phone_number_label');?></h3>
+            <h2 class="bx--type-beta"><?php the_field('contact_phone_number');?></h2>
+          </div>
+      </div>
+
+      <div class="fw--col-sm-12 fw--col-md-6 section-fw contactform">
+        <h4><?php the_field('contact_form_heading', 'option');?></h4>
+        <?php echo do_shortcode( '[contact-form-7 id="621" title="Contact form 1" html_class="bx--form-item"]' ); ?>
+      </div>
+
+  </div>
+</div>

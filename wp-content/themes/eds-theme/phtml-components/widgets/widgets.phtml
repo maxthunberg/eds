@@ -1,0 +1,31 @@
+<div class="widgets">
+
+  <!--Widget 1-->
+  <?php if ( is_active_sidebar( 'widget_1' ) ) : ?>
+	<div class="widget-1 widget">
+    <img class="widget-logo" src="<?php the_field('widget_one_logo','option'); ?>" />
+	</div>
+  <?php endif; ?>
+
+  <!--Widget 2-->
+  <?php if ( is_active_sidebar( 'widget_2' ) ) : ?>
+	<div class="widget-2 widget">
+		<?php dynamic_sidebar( 'widget_2' ); ?>
+	</div>
+  <?php endif; ?>
+
+  <!--Widget 3-->
+  <?php if ( is_active_sidebar( 'widget_3' ) ) : ?>
+  <div class="widget-3 widget">
+    <?php dynamic_sidebar( 'widget_3' ); ?>
+  </div>
+  <?php endif; ?>
+
+  <!--Widget 4-->
+  <?php if ( is_active_sidebar( 'widget_4' ) ) : ?>
+  <div class="widget-4 widget">
+    <?php dynamic_sidebar( 'widget_4' ); ?>
+  </div>
+  <?php endif; ?>
+
+</div>

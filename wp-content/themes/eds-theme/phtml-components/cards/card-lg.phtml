@@ -1,0 +1,28 @@
+
+    <div class="bx--col-xs-12 revealer-100">
+      <a class="card-link" href="<?php echo get_permalink( $post->ID ); ?>">
+      <div class="card-lg interactive">
+
+        <div class="card-img image card-half">
+          <div class="img-container">
+            <img class="featured-image" src="<?php the_post_thumbnail_url(); ?>"/>
+          </div>
+        </div>
+
+        <div class="card-content card-half">
+          <div class="text-container">
+            <h3><?php echo the_title();?></h3>
+            <p>
+            <?php echo excerpt(30);?>
+            </p>
+          </div>
+          <div class="btn-container">
+            <button class="bx--btn bx--btn--primary" type="button">Read More</button>
+          </div>
+
+        </div>
+
+      </div>
+      </a>
+
+    </div>

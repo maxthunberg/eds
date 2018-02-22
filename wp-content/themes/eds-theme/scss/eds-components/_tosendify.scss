@@ -1,0 +1,70 @@
+.sendify {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: rem(64px) 0;
+  background: #ee644e;
+  background: -moz-linear-gradient(left, #F06449 0%, #FA8334 100%);
+  background: -webkit-linear-gradient(left, #F06449 0%,#FA8334 100%);
+  background: linear-gradient(to right, #F06449 0%,#FA8334 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F06449', endColorstr='#FA8334',GradientType=1 );
+  .sendify-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+    .sendify-text {
+      display: flex;
+      flex-direction: column;
+      margin: 0rem 2rem 0rem 0rem;
+      h4 {
+        margin-bottom: rem(8px);
+        text-align: left;
+      }
+      h4, p {
+        color: $ui-01;
+      }
+
+    }
+  }
+
+
+
+}
+
+
+@media screen and (max-width: $mq-sm) {
+.sendify {
+  .sendify-container {
+    max-width: 90%;
+    .sendify-text {
+      p {
+        display: none;
+      }
+    }
+  }
+}
+}
+
+@media screen and (max-width: $mq-xs) {
+  .sendify {
+    .sendify-container {
+      flex-direction: column;
+      padding: rem(64px) 0;
+      .sendify-text {
+        margin: 0rem 0rem 1rem 0rem;
+        h4 {
+          margin-bottom: rem(8px);
+          text-align: center;
+
+        }
+
+        h4, p{
+          color: $ui-01;
+        }
+      }
+    }
+  }
+
+}

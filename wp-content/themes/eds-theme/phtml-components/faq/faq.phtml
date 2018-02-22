@@ -1,0 +1,77 @@
+<div class="bx--grid section-default bg-02 faq air">
+  <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 section-1col"><h3 class="bx--type-beta"><?=$faq_main_heading;?></h3></div>
+    <div class="bx--row">
+            <div class="bx--col-xs-12 bx--col-md-6 section-2col">
+
+              <ul data-accordion class="bx--accordion">
+                      <?php endif; endwhile; endif;?>
+    <?php//endif; ?> <!-- IF FAQ HAVE QUESTIONS -> SHOW SECTION -->
+
+          <!--The Loop-->
+          <?php if ( $faq->have_posts() ) : while ( $faq->have_posts() ) :
+
+                $faq->the_post();
+                $question = get_field('question');
+                $answer = get_field('answer');
+                $select = get_field('select');
+                $number = ++$i;
+
+                if ($select == 'industry_healthcare'):
+
+                ?>
+
+                <li data-accordion-item class="bx--accordion__item">
+                  <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane<?php echo $number;?>">
+                    <svg class="bx--accordion__arrow" width="5" height="10" viewBox="0 0 5 10" fill-rule="evenodd">
+                      <path d="M0 0L5  5 0 10z"></path>
+                    </svg>
+                    <p class="bx--accordion__title"><?=$question;?></p>
+                  </button>
+                  <div id="pane<?php echo $number;?>" class="bx--accordion__content">
+                    <p><?=$answer;?></p>
+                  </div>
+                </li>
+
+            <?php endif; endwhile; endif;?>
+
+          </ul>
+        </div>
+
+        <div class="bx--col-xs-12 bx--col-md-6 section-2col">
+
+          <ul data-accordion class="bx--accordion">
+
+
+      <!--The Loop-->
+      <?php if ( $faq->have_posts() ) : while ( $faq->have_posts() ) :
+
+            $faq->the_post();
+            $question = get_field('question');
+            $answer = get_field('answer');
+            $select = get_field('select');
+            $number = ++$i;
+
+            if ($select == 'industry_healthcare_col2'):
+
+            ?>
+
+            <li data-accordion-item class="bx--accordion__item">
+              <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane<?php echo $number;?>">
+                <svg class="bx--accordion__arrow" width="5" height="10" viewBox="0 0 5 10" fill-rule="evenodd">
+                  <path d="M0 0L5  5 0 10z"></path>
+                </svg>
+                <p class="bx--accordion__title"><?=$question;?></p>
+              </button>
+              <div id="pane<?php echo $number;?>" class="bx--accordion__content">
+                <p><?=$answer;?></p>
+              </div>
+            </li>
+
+        <?php endif; endwhile; endif;?>
+
+      </ul>
+    </div>
+
+
+</div>
+</div>

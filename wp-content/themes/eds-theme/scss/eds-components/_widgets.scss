@@ -1,0 +1,68 @@
+.widgets {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: $brand-02;
+  min-height: rem(320px);
+  width: 100%;
+  padding: 3rem 5%;
+  color: $ui-01;
+
+  h3 {
+    color: $ui-01;
+    margin-bottom: 1.5rem;
+  }
+
+    li {
+      margin-bottom: 1rem;
+      list-style-type: none;
+
+      a {
+        font-size: rem(16px);
+        text-decoration: none;
+        line-height: 1.25;
+        color: $ui-01;
+        font-weight: 300;
+        &:hover{
+          color: $ui-03;
+        }
+      }
+
+  }
+
+}
+
+.widget-1, .widget-2, .widget-3, .widget-4 {
+  width: 22.5%;
+  margin: 1rem 0;
+  .widget-logo {
+    max-width: 70%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: $mq-md) {
+  .widget-1, .widget-2, .widget-3, .widget-4 {
+    width: 45%;
+    .widget-logo {
+      max-width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: $mq-xs) {
+  .widgets {
+    justify-content: center;
+  }
+  .widget-1, .widget-2, .widget-3, .widget-4 {
+    width: 70%;
+    .widget-logo {
+      max-width: 90%;
+    }
+
+  }
+  .widgets {
+    padding:3rem 3%;
+
+  }
+}

@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: $brand-02;
+  height: 3rem;
+  width: 100%;
+  padding:$gutter;
+  box-shadow: $box-shadow--temporary-nav--inverted;
+
+  p {
+    font-size: rem(12px);
+    color: $ui-01;
+  }
+}
+
+@media screen and (max-width: $mq-xs) {
+  .footer {
+    padding: $gutter-xs;
+    justify-content: center;
+  }
+}

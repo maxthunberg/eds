@@ -1,0 +1,44 @@
+
+  <div id="tab-panel-4" class="tab-4" role="tabpanel" aria-labelledby="tab-link-4" aria-hidden="false " hidden>
+    <div class="services bg-02 section-default">
+
+        <div class="bx--grid">
+          <div class="bx--row">
+
+            <?php
+
+            $args = array(
+              'post_type' => 'post',
+              'posts_per_page' => -1,
+              'cat' => 18,
+              'orderby' => 'post_date',
+              'order' => 'DESC'
+             );
+
+
+            // The Query
+            $query = new WP_Query( $args );
+
+
+
+            // The Loop
+            if ( $query->have_posts() ) {
+            	while ( $query->have_posts() ) {
+            		$query->the_post();
+
+                include( get_template_directory() . '/phtml-components/cards/card-sm.phtml');
+
+            	}
+            	/* Restore original Post Data */
+            	wp_reset_postdata();
+            } else {
+            }
+
+            ?>
+
+          </div>
+
+        </div>
+
+    </div>
+  </div>

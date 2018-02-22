@@ -1,0 +1,384 @@
+img {
+  -webkit-user-select: none!important;
+ -khtml-user-select: none!important;
+ -moz-user-select: none!important;
+ -o-user-select: none!important;
+ user-select: none!important;
+}
+
+// Preload images
+.preload-image--transportation::after {
+content:
+url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-road.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-air.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-courier.jpg);
+display: none;
+}
+.preload-image--industry::after {
+content:
+url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-automotive.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-fashion.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-healthcare.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-hightech.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-industrial.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-maritime.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-passportvisa.jpg);
+display: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+
+// SPACING
+.section-0rem {
+  padding: 0;
+}
+
+.section-1rem {
+  padding: 1rem 0;
+}
+
+.section-2rem {
+  padding: 2rem 0;
+}
+
+.section-3rem {
+  padding: 2rem 0;
+}
+
+.section-4rem {
+  padding: 4rem 0;
+}
+
+.section-default {
+  padding: 6rem 0;
+}
+
+.section-fw {
+  padding: 4rem 3rem 4rem 3rem;
+}
+
+.section-6rem {
+  padding: 6rem 0;
+}
+
+.section-8rem {
+  padding: 8rem 0;
+}
+
+.section-lg--bottom {
+  padding: 2rem 0 8rem 0;
+}
+
+.row--center {
+  justify-content: center;
+}
+
+.col--flexcenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bx--grid--split {
+  padding:0;
+}
+
+// Custom grid
+
+.fw--grid {
+  padding: 0;
+}
+
+.fw--row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fw--col-md-6 {
+  flex-basis: 50%;
+}
+
+.bg-img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.section-1col, .section-2col, .section-3col, .section-3col--card .section-4col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    margin-bottom: 2rem;
+    max-width: 50%;
+  }
+}
+
+.section-1col {
+  padding: 2rem 0;
+}
+
+.section-1col {
+  padding: 2rem 0;
+}
+
+.section-2col {
+
+  &:nth-child(2n+1){
+    padding: 2rem 1.5rem 2rem 0rem;
+  }
+  &:nth-child(2n+2) {
+    padding: 2rem 0rem 2rem 1.5rem;
+  }
+}
+
+.section-3col, .section-3col--card {
+  &:nth-child(3n+1) {
+    padding: 2rem 2rem 2rem 0rem;
+  }
+  &:nth-child(3n+2) {
+    padding: 2rem 1rem 2rem 1rem;
+  }
+  &:nth-child(3n+3) {
+    padding: 2rem 0rem 2rem 2rem;
+  }
+}
+
+
+.section-4col {
+  &:nth-child(4n+1) {
+    padding: 2rem 1rem 2rem 1rem
+  }
+  &:nth-child(4n+2) {
+    padding: 2rem 1rem 2rem 1rem
+  }
+  &:nth-child(4n+3) {
+    padding: 2rem 1rem 2rem 1rem
+  }
+  &:nth-child(4n+4) {
+    padding: 2rem 1rem 2rem 1rem
+  }
+}
+
+
+
+.btn-container {
+  margin-top: 1.5rem;
+}
+
+// ALIGNMENT
+.section-center--col {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.section-center{
+  align-items: center;
+  justify-content: center;
+}
+
+// COLORS
+.bg-01 {
+  background-color: $ui-01;
+}
+.bg-02 {
+  background-color: $ui-02;
+}
+
+.bg-03 {
+  background-color: $ui-03;
+}
+
+.bg-brand-01 {
+  background-color: $brand-01;
+}
+
+.bg-brand-02 {
+  background-color: $brand-02;
+}
+
+.bg-brand-03 {
+  background-color: $brand-03;
+}
+
+.section-white * {
+  color: $ui-01;
+}
+
+.section-white h3 {
+  text-align: center;
+}
+
+
+// TOO SMALL COMPONENTS
+
+.contactform {
+  h4 {
+    text-align: center;
+    margin-bottom: rem(32px);
+  }
+  form {
+    width: 100%;
+  }
+}
+
+.inrush {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $ui-03;
+  .inrush-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+
+// WYSIWYG EDITOR
+.wysiwyg {
+  align-items: flex-start!important;
+
+  h1, h2, h3, h4, h5{
+    line-height: 1.25;
+    font-weight: 400;
+    color: $brand-01;
+  }
+  h1, h2, h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+  h4, h5{
+    font-size: 1.25rem;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+
+  h6{
+    font-size: .875rem;
+    text-align: center;
+    margin-bottom: .5rem;
+    width: 100%;
+  }
+  h4{
+
+  }
+  h5{
+
+  }
+  h6{
+
+  }
+  p {
+    margin-bottom: 0rem;
+
+  }
+  img {
+    width: 100%!important;
+    max-width: 100%!important;
+    height: auto;
+    box-shadow: $box-shadow--raised;
+  }
+}
+
+
+
+@media screen and (max-width: $mq-md) {
+
+  .fw--col-md-6 {
+    flex-basis: 50%;
+  }
+
+  .section-3col--card {
+
+    &:nth-child(2n+1){
+      padding: 2rem 1.5rem 1rem 0rem;
+    }
+    &:nth-child(2n+2){
+      padding: 2rem 1.5rem 1rem 0rem;
+    }
+  }
+
+  .section-4col {
+    &:nth-child(4n+1){
+      padding: 2rem 1.5rem 1rem 0rem;
+    }
+    &:nth-child(4n+2) {
+      padding: 2rem 0rem 1rem 1.5rem;
+    }
+    &:nth-child(4n+3){
+      padding: 1rem 1.5rem 2rem 0rem;
+    }
+    &:nth-child(4n+4) {
+      padding: 1rem 0rem 2rem 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: $mq-sm) {
+
+  .section-1col, .section-2col, .section-3col, .section-4col {
+    img {
+      margin: 2rem 0;
+      max-width: 80%;
+    }
+  }
+
+  .fw--col-sm-12 {
+    flex-basis: 100%;
+  }
+
+  .section-fw {
+    padding: 4rem 2rem 4rem 2rem;
+  }
+
+  .bg-img {
+    min-height: rem(320px);
+  }
+  .section-2col {
+
+    &:nth-child(2n+1) {
+      padding: 2rem 0rem 2rem 0rem;
+    }
+    &:nth-child(2n+2) {
+      padding: 2rem 0rem 2rem 0rem;
+    }
+  }
+
+  .section-3col, .section-3col--card {
+    &:nth-child(3n+1) {
+      padding: 2rem 0rem 2rem 0rem;
+    }
+    &:nth-child(3n+2) {
+      padding: 2rem 0rem 2rem 0rem;
+    }
+    &:nth-child(3n+3) {
+      padding: 2rem 0rem 2rem 0rem;
+    }
+  }
+
+  .section-4col {
+    &:nth-child(4n+1) {
+      padding: 2rem 0rem 2rem 0rem;
+    }
+    &:nth-child(4n+2){
+      padding: 2rem 0rem 2rem 0rem;
+    }
+    &:nth-child(4n+3) {
+      padding: 2rem 0rem 2rem 0rem;
+    }
+    &:nth-child(4n+4) {
+      padding: 2rem 0rem 2rem 0rem;
+    }
+  }
+
+
+}

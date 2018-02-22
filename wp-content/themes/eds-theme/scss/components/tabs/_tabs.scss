@@ -1,0 +1,179 @@
+//-----------------------------
+// Tabs
+//-----------------------------
+
+@import '../../globals/scss/vars';
+@import '../../globals/scss/colors';
+@import '../../globals/scss/helper-mixins';
+@import '../../globals/scss/layer';
+@import '../../globals/scss/typography';
+@import '../../globals/scss/layout';
+@import '../../globals/scss/import-once';
+@import '../../globals/scss/css--typography';
+
+@include exports('tabs') {
+  .#{$prefix}--tabs {
+    @include typescale('zeta');
+    @include font-smoothing;
+    @include font-family;
+    color: $text-02;
+    font-weight: 600;
+    cursor: pointer;
+    height: rem(48px);
+    width: 100%;
+    position: relative;
+
+    @include breakpoint(bp--sm--major) {
+      background: none;
+      height: rem(48px);
+    }
+  }
+
+  .#{$prefix}--tabs-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: rem(17px) 5%;
+    cursor: pointer;
+    background-color: $ui-01;
+
+    svg {
+      width: rem(12px);
+      height: rem(12px);
+      fill: $brand-01;
+    }
+
+    &:focus {
+      @include focus-outline('border');
+      background-color: $ui-03;
+      color: $brand-02;
+    }
+
+    @include breakpoint(bp--sm--major) {
+      display: none;
+    }
+  }
+
+  .#{$prefix}--tabs-trigger-text {
+    text-decoration: none;
+    font-weight: 600;
+    color: $brand-01;
+
+    &:focus {
+      @include focus-outline('border');
+    }
+  }
+
+  .#{$prefix}--tabs__nav {
+    @include layer('overlay');
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    margin: 0%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: rem(48px);
+
+    @include breakpoint(bp--sm--major) {
+      @include typescale('epsilon');
+      flex-direction: row;
+      background: none;
+      box-shadow: none;
+    }
+  }
+
+
+  .#{$prefix}--tabs__nav--hidden {
+    display: none;
+
+    @include breakpoint(bp--sm--major) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .#{$prefix}--tabs__nav-item {
+    @include typescale('zeta');
+    background-color: $ui-01;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      background-color: $ui-03;
+
+      @include breakpoint(bp--sm--major) {
+        outline: 1px solid transparent;
+        background-color: $ui-03;
+      }
+    }
+
+    @include breakpoint(bp--sm--major) {
+      background: transparent;
+      padding: rem(16px);
+
+      & + & {
+        padding: rem(16px);
+      }
+    }
+  }
+
+  .#{$prefix}--tabs__nav-item--selected {
+    background-color: $ui-01;
+    border: none;
+
+    @include breakpoint(bp--sm--major) {
+
+      border-bottom: 2px solid $brand-02;
+
+      .#{$prefix}--tabs__nav-link {
+        color: $brand-01;
+
+        &:focus {
+          color: $brand-01;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}--tabs__nav-item:hover .#{$prefix}--tabs__nav-link {
+    color: $brand-02;
+
+    @include breakpoint(bp--sm--major) {
+      color: $brand-02;
+    }
+  }
+
+  .#{$prefix}--tabs__nav-link {
+    display: inline-block;
+    color: $text-02;
+    text-decoration: none;
+    padding: rem(17px) 5%;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:focus {
+      outline: 1px solid transparent;
+      background-color: $brand-01;
+      color: $inverse-01;
+    }
+
+    @include breakpoint(bp--sm--major) {
+      padding: 0.05rem;
+      width: auto;
+
+      &:hover {
+        color: $brand-01;
+      }
+
+      &:focus {
+        background-color: transparent;
+        color: $text-01;
+        outline: 1px solid transparent;
+        box-shadow: 0 0 0 1px $brand-01;
+      }
+    }
+  }
+}

@@ -1,0 +1,136 @@
+//-------------------------
+// 🌍 Global
+//-------------------------
+
+$css--font-face: false !default;
+$css--helpers: true !default;
+$css--body: true !default;
+$css--use-layer: true !default;
+$css--reset: true !default;
+$css--typography: true !default;
+$css--plex: true !default;
+
+@import 'colors';
+@import 'vars';
+@import 'mixins';
+@import 'layout';
+@import 'layer';
+@import 'spacing';
+@import 'typography';
+@import 'import-once';
+@import 'css--reset';
+@import 'css--font-face';
+@import 'css--helpers';
+@import 'css--body';
+@import 'css--typography';
+@import '../grid/grid';
+
+// Media queries
+
+$mq-xs: 576px;
+$mq-sm: 767px;
+$mq-md: 992px;
+$mq-lg: 1200px;
+$mq-xl: 1600px;
+
+// Gutters by size (padding value)
+
+$gutter-xs: 0 2rem;
+$gutter: 0 3rem;
+
+
+
+
+//-------------------------
+// ☠️  Manage deprecations
+//-------------------------
+
+/**
+ * We flag this variable as true if someone uses the globals/scss/styles.scss
+ * entry-point. This allows us to collect all the messages and display them at
+ * the end of the file instead of bringing it up per-component.
+ *
+ * If a consumer instead gets the components by importing the partial directly,
+ * this variable _will not_ be set to true, so the deprecation message will be
+ * displayed after the @import.
+ */
+$deprecations--entry: true;
+// Collect all deprecation reasons into this list throughout the import cycle.
+$deprecations--reasons: ();
+// This message will be prepended to any deprecation notice
+$deprecations--message: 'Deprecated code was found, this code will be removed before the next release of Carbon.';
+
+//-------------------------
+// 🍕 Components
+//-------------------------
+
+@import '../../components/button/button';
+@import '../../components/search/search';
+@import '../../components/form/form';
+@import '../../components/link/link';
+@import '../../components/card/card';
+@import '../../components/dropdown/dropdown';
+@import '../../components/notification/inline-notification';
+@import '../../components/notification/toast-notification';
+@import '../../components/tooltip/tooltip';
+@import '../../components/tabs/tabs';
+@import '../../components/text-input/text-input';
+@import '../../components/interior-left-nav/interior-left-nav';
+@import '../../components/accordion/accordion';
+@import '../../components/modal/modal';
+
+
+
+//EXPRESS DELIVERY COMPONENTS.
+@import '../../eds-components/hero';
+@import '../../eds-components/navbar';
+@import '../../eds-components/sections';
+@import '../../eds-components/contactform';
+@import '../../eds-components/sidenav';
+@import '../../eds-components/footer';
+@import '../../eds-components/widgets';
+@import '../../eds-components/map';
+@import '../../eds-components/card-lg';
+@import '../../eds-components/card-sm';
+@import '../../eds-components/advantages';
+@import '../../eds-components/quote--fullwidth';
+@import '../../eds-components/tosendify';
+@import '../../eds-components/blog';
+@import '../../eds-components/tabnav';
+@import '../../eds-components/preloader';
+@import '../../eds-components/textanimation';
+@import '../../eds-components/countries-section';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------
+// 🙈 Hidden (Not exposed on website)
+//-------------------------------------
+@import '../../components/footer/footer';
+
+
+
+
+
+// Cycle through all the deprecation reasons, if any exist, that have been
+// accumulated through the @import process.
+@if (length($deprecations--reasons) > 0) {
+  $deprecations--message: '';
+  @each $reason in $deprecations--reasons {
+    $deprecations--message: '#{$deprecations--message}
+REASON: #{$reason}';
+  }
+
+  @warn $deprecations--message;
+}

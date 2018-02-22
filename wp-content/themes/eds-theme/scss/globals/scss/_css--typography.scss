@@ -1,0 +1,137 @@
+@import 'colors';
+@import 'vars';
+@import 'mixins';
+@import 'typography';
+@import 'css--reset';
+@import 'import-once';
+
+@mixin typography {
+  // really big
+  .#{$prefix}--type-giga {
+    @include typescale('giga');
+    @include reset;
+    @include line-height('heading');
+    font-weight: 300;
+  }
+
+  .#{$prefix}--type-mega {
+    @include typescale('mega');
+    @include reset;
+    @include line-height('heading');
+    font-weight: 300;
+  }
+
+  // really small
+  .#{$prefix}--type-omega {
+    @include typescale('omega');
+    @include reset;
+    @include line-height('heading');
+    font-weight: 400;
+  }
+
+  .#{$prefix}--type-caption {
+    @include typescale('caption');
+    @include reset;
+    @include line-height('body');
+    font-weight: 400;
+  }
+
+  .#{$prefix}--type-legal {
+    @include typescale('legal');
+    @include reset;
+    @include line-height('body');
+    font-weight: 400;
+  }
+
+  .#{$prefix}--type-caps {
+    text-transform: uppercase;
+  }
+
+  strong,
+  .#{$prefix}--type-strong {
+    @include reset;
+    font-weight: 700;
+  }
+
+  p {
+    @include reset;
+    @include typescale('p');
+    @include line-height('body');
+    font-weight: 300;
+  }
+
+  em {
+    @include reset;
+    font-style: italic;
+  }
+
+  a {
+    @include reset;
+    color: $brand-01;
+  }
+
+  h1,
+  .#{$prefix}--type-alpha {
+    @include reset;
+    @include typescale('alpha');
+    @include line-height('heading');
+    font-weight: 400;
+    color: $brand-01;
+  }
+
+  h2,
+  .#{$prefix}--type-beta {
+    @include reset;
+    @include typescale('beta');
+    @include line-height('heading');
+    font-weight: 400;
+    color: $brand-01;
+  }
+
+  h3,
+  .#{$prefix}--type-gamma {
+    @include reset;
+    @include typescale('gamma');
+    @include line-height('heading');
+    font-weight: 400;
+    color: $brand-01;
+    margin-bottom: 1rem;
+    // text-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+  }
+
+  h4,
+  .#{$prefix}--type-delta {
+    @include reset;
+    @include typescale('delta');
+    @include line-height('heading');
+    font-weight: 300;
+    color: $brand-01;
+  }
+
+  h5,
+  .#{$prefix}--type-epsilon {
+    @include reset;
+    @include typescale('epsilon');
+    @include line-height('heading');
+    font-weight: 300;
+    color: $brand-01;
+  }
+
+  h6,
+  .#{$prefix}--type-zeta {
+    @include reset;
+    @include typescale('zeta');
+    @include line-height('body');
+    font-weight: 300;
+    margin-bottom: .25rem;
+    letter-spacing: 3px;
+    color: $brand-02;
+    text-transform: uppercase;
+  }
+}
+
+@include exports('css--typography') {
+  @if global-variable-exists('css--typography') == false or $css--typography == true {
+    @include typography;
+  }
+}

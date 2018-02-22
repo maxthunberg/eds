@@ -1,13 +1,50 @@
 .countries {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $brand-02;
-  height: 100%;
+  background-color: $ui-02;
+  box-shadow: $box-shadow--temporary-nav--inverted;
+  position: relative;
+  height: rem(96px);
   width: 100%;
+  z-index: 3;
   .country {
-    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     width: 25%;
+    padding: 16px;
+    img {
+      width: 28px;
+      height: 20px;
+      margin-right: .5rem;
+    }
+  }
+}
+
+@media screen and (max-width: $mq-md) {
+  .countries {
+    // flex-direction: column;
+    .country {
+      width: 33.33%;
+    }
+
+    .country:nth-child(4) {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $mq-sm) {
+  .countries {
+    // flex-direction: column;
+    .country {
+      width: 50%;
+    }
+    .country:nth-child(3) {
+      display: none;
+    }
+    .country:nth-child(4) {
+      display: none;
+    }
   }
 }

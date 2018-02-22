@@ -1,8 +1,9 @@
 .quote--fullwidth {
   background-color: $brand-02;
   padding: 128px 0;
-  box-shadow: $box-shadow--temporary-nav--inverted;
+  // box-shadow: $box-shadow--temporary-nav--inverted;
   position: relative;
+  z-index: 5;
   .quote-content {
     display: flex;
     align-items: center;

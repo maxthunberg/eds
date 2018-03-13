@@ -1,9 +1,10 @@
 <?php
 /* Template Name: Front Page Template */
+
 ?>
 
 
-<?php get_header(); ?>
+<?php get_header();?>
 
 <!-- HERO -->
 

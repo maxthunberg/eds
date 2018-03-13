@@ -1,44 +1,61 @@
 
-  <div id="tab-panel-2" class="tab-2" role="tabpanel" aria-labelledby="tab-link-2" aria-hidden="false " hidden>
-    <div class="services bg-02 section-default">
+<?php $i = 0;
+      foreach( $terms as $term ):
+      $number = ++$i;?>
 
-        <div class="bx--grid">
-          <div class="bx--row">
+    <div id="tab-panel-<?= $number;?>" class="tab-<?= $number;?>" role="tabpanel" aria-labelledby="tab-link-<?= $number;?>" aria-hidden="false " hidden>
+      <div class="services bg-02 section-default">
 
-            <?php
+          <div class="bx--grid">
+            <div class="bx--row">
 
-            $args = array(
-              'post_type' => 'post',
-              'posts_per_page' => -1,
-              'cat' => 16,
-              'orderby' => 'post_date',
-              'order' => 'DESC'
-             );
+              <?php
+              $id = $term->term_id;
+
+              if ($term->slug == 'news'){
+                $args = array(
+                  'post_type' => 'post',
+                  'posts_per_page' => -1,
+                  // 'cat' => $id,
+                  'orderby' => 'post_date',
+                  'order' => 'DESC'
+                 );
+              } else {
+                $args = array(
+                  'post_type' => 'post',
+                  'posts_per_page' => -1,
+                  'cat' => $id,
+                  'orderby' => 'post_date',
+                  'order' => 'DESC'
+                 );
+              }
 
 
-            // The Query
-            $query = new WP_Query( $args );
+
+              // The Query
+              $query = new WP_Query( $args );
 
 
 
-            // The Loop
-            if ( $query->have_posts() ) {
-            	while ( $query->have_posts() ) {
-            		$query->the_post();
+              // The Loop
+              if ( $query->have_posts() ) {
+                while ( $query->have_posts() ) {
+                  $query->the_post();
 
-                include( get_template_directory() . '/phtml-components/cards/card-sm.phtml');
+                  include( get_template_directory() . '/phtml-components/cards/card-sm.phtml');
 
-            	}
-            	/* Restore original Post Data */
-            	wp_reset_postdata();
-            } else {
-            }
+                }
+                /* Restore original Post Data */
+                wp_reset_postdata();
+              } else {
+              }
 
-            ?>
+              ?>
+
+            </div>
 
           </div>
 
-        </div>
-
+      </div>
     </div>
-  </div>
+  <?php endforeach;?>

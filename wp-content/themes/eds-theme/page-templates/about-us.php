@@ -2,7 +2,7 @@
 /* Template Name: About us Template */
 ?>
 
-<?php get_header(); ?>
+<?php get_header();$postid = get_the_ID();?>
 <!-- HERO -->
 
 <?php include( get_template_directory() . '/phtml-components/hero/hero--sm.phtml');?>

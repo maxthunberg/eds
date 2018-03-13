@@ -330,9 +330,7 @@ add_action( 'admin_menu', 'revcon_change_post_label' );
 add_action( 'init', 'revcon_change_post_object' );
 
 
-
-add_action( 'after_setup_theme', 'theme_setup' );
-
-
 //removes wp-toolbar
 add_filter('show_admin_bar', '__return_false');
+
+add_action( 'after_setup_theme', 'theme_setup' );

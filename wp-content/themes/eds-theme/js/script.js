@@ -66,8 +66,6 @@ function closeSideNav() {
 		if ($('.sidenav-bg').hasClass('active')) {
 			closeSideNavKeypress()
 			enableScroll();
-		} else {
-
 		}
 	});
 
@@ -76,13 +74,13 @@ closeSideNav(); // Click on close icon closes sidenav
 
 
 //sidenav & main nav icon states
-$('.close').hover(function(){
+	$('.close').hover(function(){
 		$('.close-line').toggleClass('hover');
 	});
 
 	$('.hamburger').hover(function(){
 			$('.hamburger-line').toggleClass('hover');
-		});
+	});
 
 //sidenav list icons animation of parents IF THEY HAVE NESTED ITEMS
 	$('.left-nav-list__item-link').click(function () {
@@ -90,55 +88,38 @@ $('.close').hover(function(){
       chi.find(".icn-plus--line-2").toggle('active');
   });
 
-
-
-
-
 	// ALL KEYPRESS
 			$(document).keydown(function(e) {
 			    switch(e.which) {
 			        case 37: // left
 							blogSwiper.slidePrev();
-
 			        break;
 
 			        case 38: // up
-
 			        break;
 
 			        case 39: // right
 							blogSwiper.slideNext();
-
 			        break;
 
 			        case 40: // down
-
-
 			        break;
 
 							case 13: // enter
-
 							break;
 
 							case 27: // ESC
-
 							// Press ESC when sidenav is active and it will close
 							if ($('.sidenav-bg').hasClass('active')) {
 								closeSideNavKeypress();
-							} else {
-
 							}
+
 							break;
 
 			        default: return; // exit this handler for other keys
 			    }
 			    e.preventDefault(); // prevent the default action (scroll / move caret)
 			});
-
-
-
-
-
 
 // fade effect of menu items on width changes of viewport
 
@@ -153,9 +134,9 @@ $('.close').hover(function(){
 				}
 		}
 
-		fadeMenuSm(768);
+		fadeMenuSm(910);
 		$(window).resize(function() {
-				fadeMenuSm(768);
+				fadeMenuSm(910);
 		});
 
 
@@ -173,7 +154,7 @@ function navbarScrollAnimation() {
 			}
 	});
 
-	$(window).scroll(function () {
+	$(window).scroll(function() {
 			var $this = $(this),
 					$start = $('.navbar-mobile');
 			if ($this.scrollTop() > 120) {
@@ -184,6 +165,17 @@ function navbarScrollAnimation() {
 	});
 
 }
+
+function modalActivation() {
+	if ($('btn-modal').hasClass('is-visible')) {
+		disableScroll();
+	} else {
+		enableScroll();
+		// $('.bx--modal').addClass('is-visible');
+	}
+}
+
+modalActivation();
 
 
 
@@ -242,7 +234,7 @@ if(ie) {
   });
 }
 
-// Smooth scroll to services homepage
+// Smooth scroll to service section on homepage
 
 function scrollToAnchor(aid){
     var aTag = $("a[name='"+ aid +"']");
@@ -253,7 +245,7 @@ $("#services").click(function() {
    scrollToAnchor('services');
 });
 
-
+// swiper slider
 var blogSwiper = new Swiper ('.swiper-container', {
   speed: 300,
   loop : true,
@@ -304,11 +296,6 @@ function preloaderAfterLoad() {
 }
 
 
-
-
-
-	// correctFaqValues();
-
 // Wait to follow ahref
 function preloaderBeforeLoad(x) {
 	$(x).click(function(event) {
@@ -319,7 +306,6 @@ function preloaderBeforeLoad(x) {
 	    event.preventDefault();
 
 	    // Do the async thing
-
 						$('.preloader').removeClass('hide');
 
 						setTimeout(function() {
@@ -395,7 +381,7 @@ if ($('.bx--tabs').hasClass('industry') ) {
 	hero.css('background-image', 'url(' +  window.location.protocol + "//" + window.location.host + pathURL + industryTabimg1 + ')');
 }
 
-
+// Scroll to top when tablink click
 // $('.bx--tabs').click(function(){
 // 	var body = $("html, body");
 //
@@ -419,6 +405,99 @@ clickTabChangeImg(industryTab5, industryTabimg5);
 clickTabChangeImg(industryTab6, industryTabimg6);
 clickTabChangeImg(industryTab7, industryTabimg7);
 
+// To change the url on express service page to the correct depending on tab selected
+function changeTabNavLinks() {
+    $(".bx--tabs__nav li:first").addClass("bx--tabs__nav-item--selected");
+
+		$(".tab-1").removeAttr("hidden");
+
+    $(".bx--tabs__nav-link").on('click', function (e) {
+        $(this).closest('li').addClass("bx--tabs__nav-item--selected").siblings().removeClass("bx--tabs__nav-item--selected");
+    });
+
+    var hash = $.trim( window.location.hash );
+
+    if (hash) $('.bx--tabs__nav-link[href$="'+hash+'"]').trigger('click');
+
+};
+
+changeTabNavLinks();
+
+function getHrefAttribute() {
+	$('.bx--tabs__nav li').click(function(){
+				var itemClicked = $(this).children('a').attr('href');
+				var stateObj = { foo: itemClicked };
+				history.pushState(stateObj, itemClicked, itemClicked);
+
+	});
+}
+getHrefAttribute();
+
+
+// Reading indicator post pages
+$(document).ready(function(){
+
+    var getMax = function(){
+        return $(document).height() - $(window).height();
+    }
+
+    var getValue = function(){
+        return $(window).scrollTop();
+    }
+
+    if('max' in document.createElement('progress')){
+        // Browser supports progress element
+        var progressBar = $('progress');
+
+        // Set the Max attr for the first time
+        progressBar.attr({ max: getMax() });
+
+        $(document).on('scroll', function(){
+            // On scroll only Value attr needs to be calculated
+            progressBar.attr({ value: getValue() });
+        });
+
+        $(window).resize(function(){
+            // On resize, both Max/Value attr needs to be calculated
+            progressBar.attr({ max: getMax(), value: getValue() });
+        });
+    }
+    else {
+        var progressBar = $('.progress-bar'),
+            max = getMax(),
+            value, width;
+
+        var getWidth = function(){
+            // Calculate width in percentage
+            value = getValue();
+            width = (value/max) * 100;
+            width = width + '%';
+            return width;
+        }
+
+        var setWidth = function(){
+            progressBar.css({ width: getWidth() });
+        }
+
+        $(document).on('scroll', setWidth);
+        $(window).on('resize', function(){
+            // Need to reset the Max attr
+            max = getMax();
+            setWidth();
+        });
+    }
+});
+
+// Reading indicator on post pages
+  $('#flat').addClass("active");
+  $('#progressBar').addClass('flat');
+
+  $('#flat').on('click', function(){
+    $('#progressBar').removeClass().addClass('flat');
+    $('a').removeClass();
+    $(this).addClass('active');
+    $(this).preventDefault();
+  });
 
 
 

@@ -1,16 +1,19 @@
 <div class="hero hero-sm" title="<?=$title_hero_img?>" style="background-image: url(
-  <?php if (get_the_ID(20)) {
+  <?php if ( is_page(20) ) {
             echo get_field('hero_image');
 
-        } else  {
-          the_post_thumbnail_url();
+        } elseif ( is_home() ) { // Learn without latest post as bg image
+          // $bg_thumbnail = get_the_post_thumbnail_url(get_the_ID(),'full');
+          // echo $bg_thumbnail;
 
+        } else { // Posts get thumbnail image as bg image
+          $bg_thumbnail = get_the_post_thumbnail_url(get_the_ID(),'full');
+          echo $bg_thumbnail;
         }
       ?>
 
   )">
   <div class="overlay"></div>
-
 
 
     <div class="bx--col-xs-12 bx--col-md-12 hero-content">
@@ -19,12 +22,11 @@
       <?php else :?>
             <h2 class="bx--type-giga type-white">
       <?php endif;?>
-          <?php if ( get_the_ID() == 158 ) {
-                echo single_post_title();
+          <?php if ( get_the_ID() == 86 ) {
 
-              } else if (get_the_ID() == 507 ) {
+                } elseif ( is_home() ) {
 
-              } else {
+                } else {
                   echo esc_html( get_the_title() );
                 }
               ?>

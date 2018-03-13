@@ -2,6 +2,7 @@
 /* Template Name: Industry Solutions Template */
 
 $title_hero_img = get_field('title_hero_img');
+
 get_header(); ?>
 
 
@@ -10,7 +11,9 @@ get_header(); ?>
 
       <div class="tab-content">
 
-        <?php include( get_template_directory() . '/phtml-components/tabnav/industry-solutions/tabnav--industry-solutions.phtml');?>
+
+        <?php include( get_template_directory() . '/phtml-components/tabnav/tabnav.phtml');?>
+
 
         <?php include( get_template_directory() . '/phtml-components/tabnav/industry-solutions/automotive.phtml');?>
         <?php include( get_template_directory() . '/phtml-components/tabnav/industry-solutions/fashion-lifestyle.phtml');?>

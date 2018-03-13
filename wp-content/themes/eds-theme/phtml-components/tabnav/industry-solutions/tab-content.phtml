@@ -1,0 +1,197 @@
+<?php
+
+$i = 0;
+$nr = ++$i;
+
+$services = new WP_Query( array( 'post_type' => 'service', 'posts_per_page' => -1, 'order' => 'ASC' ) );
+$faq = new WP_Query( array( 'post_type' => 'faq', 'posts_per_page' => -1 ) );
+
+?>
+<div id="tab-panel-<?=$nr?>" class="tab-<?=$nr?>" role="tabpanel" aria-labelledby="tab-link-<?=$nr?>" aria-hidden="false" hidden>
+
+  <div class="section-2rem">
+
+      <?php if ( $services->have_posts() ) : while ( $services->have_posts() ) :
+        $services->the_post();
+
+        $selectservice = get_field('select_service');
+        if ($selectservice == 'industry_automotive'):
+
+        ?>
+
+        <?php
+
+            // check if the flexible content field has rows of data
+            if( have_rows('service_flexible') ):
+
+                 // loop through the rows of data
+                while ( have_rows('service_flexible') ) : the_row();
+
+                    if( get_row_layout() == 'intro_section' ):
+
+                      $intro = get_sub_field('intro_paragraph'); ?>
+
+                      <div class="bx--grid section-default">
+                        <div class="bx--row row--center">
+                          <div class="bx--col-xs-12 bx--col-md-8 bx--col-lg-6 section-1col"><p><?= get_sub_field('intro_paragraph'); ?></p></div>
+                        </div>
+                      </div>
+
+                  <?php elseif ( get_row_layout() == 'delivery_time_section' ):?>
+                    <div class="bx--grid bg-03 section-2rem">
+                      <div class="bx--row">
+
+                        <?php if( have_rows('delivery_time') ):?>
+
+                        <?php while ( have_rows('delivery_time') ) : the_row();?>
+
+                          <div class="bx--col-xs-12 bx--col-sm-4 section-3col">
+                            <div class="col--flexcenter cities">
+                              <h6 class="revealer-0"><?= get_sub_field('city');?></h6>
+                              <h4 class="bx--type-gamma revealer-100"><?= get_sub_field('time');?></h4>
+                            </div>
+                          </div>
+
+                    <?php endwhile;?>
+
+                  <?php endif;?>
+                    </div>
+                  </div>
+
+
+                  <?php elseif ( get_row_layout() == 'split_section' ):
+
+                      $image = get_sub_field('image');
+                      $alttext = get_sub_field('image_alt_text');
+                      $heading = get_sub_field('heading');
+                    	$paragraph = get_sub_field('paragraph'); ?>
+
+                      <!--SECOND PARAGRAF SECTION-->
+                      <div class="fw--grid bg-01">
+                        <div class="fw--row">
+
+                          <div class="fw--col-md-6 fw--col-sm-12 section-fw bg-img" alt="<?=$alttext;?>" style="background-image: url(<?=$image;?>"></div>
+                          <div class="fw--col-md-6 fw--col-sm-12 section-fw ">
+                            <h3 class="bx--type-beta revealer-0"><?=$heading;?></h3>
+                            <p class="revealer-100"><?=$paragraph;?></p>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    <?php elseif ( get_row_layout() == 'advantages' ):?>
+                      <div class="bx--grid section-default bg-02">
+                        <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 section-1col"><h3 class="bx--type-beta"><?= get_sub_field('heading'); ?></h3></div>
+
+                        <div class="bx--row">
+
+                          <?php if( have_rows('card') ):?>
+
+                          <?php while ( have_rows('card') ) : the_row();?>
+
+                          <div class="bx--col-xs-12 bx--col-md-6 bx--col-lg-4 section-3col--card">
+
+                          <div class="card-sm">
+                                <div class="card-img image card-half">
+                                  <div class="img-container--icon">
+                                      <img class="icon" alt="<?php echo get_sub_field('alt_text'); ?>" src="<?php echo get_sub_field('icon'); ?>"/>
+                                      <div class="overlay"></div>
+                                  </div>
+                                </div>
+
+                                <div class="card-content card-half">
+                                  <div class="text-container">
+                                    <h3><?php echo get_sub_field('sub-heading');?></h3>
+                                    <p>
+                                      <?php echo get_sub_field('paragraph');?>
+                                    </p>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+
+
+                      <?php endwhile;?>
+
+                    <?php endif;?>
+                      </div>
+                    </div>
+
+                  <?php elseif ( get_row_layout() == 'faq_section' ):?>
+
+                    <div class="bx--grid section-default bg-01 faq air">
+                      <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 section-1col"><h3 class="bx--type-beta"><?= get_sub_field('faq_heading');?></h3></div>
+                        <div class="bx--row">
+
+
+                        <?php if( have_rows('faq_col1') ):
+                          $i = 0;
+                          $number = ++$i;
+                          ?>
+                          <div class="bx--col-xs-12 bx--col-md-6 section-2col">
+
+                                <ul data-accordion class="bx--accordion">
+
+                        <?php while ( have_rows('faq_col1') ) : the_row();?>
+
+                          <li data-accordion-item class="bx--accordion__item">
+                            <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane<?= $number;?>">
+                              <svg class="bx--accordion__arrow" width="5" height="10" viewBox="0 0 5 10" fill-rule="evenodd">
+                                <path d="M0 0L5  5 0 10z"></path>
+                              </svg>
+                              <p class="bx--accordion__title"><?= get_sub_field('question'); ?></p>
+                            </button>
+                            <div id="pane<?= $number;?>" class="bx--accordion__content">
+                              <p><?= get_sub_field('answer'); ?></p>
+                            </div>
+                          </li>
+
+
+                    <?php endwhile;?>
+                          </ul>
+                        </div>
+                  <?php endif;?>
+                  <?php if( have_rows('faq_col2') ):
+                    $i = 0;
+                    $number = ++$i;
+                    ?>
+                    <div class="bx--col-xs-12 bx--col-md-6 section-2col">
+
+                          <ul data-accordion class="bx--accordion">
+
+                  <?php while ( have_rows('faq_col2') ) : the_row();?>
+
+                    <li data-accordion-item class="bx--accordion__item">
+                      <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane<?= $number;?>">
+                        <svg class="bx--accordion__arrow" width="5" height="10" viewBox="0 0 5 10" fill-rule="evenodd">
+                          <path d="M0 0L5  5 0 10z"></path>
+                        </svg>
+                        <p class="bx--accordion__title"><?= get_sub_field('question'); ?></p>
+                      </button>
+                      <div id="pane<?= $number;?>" class="bx--accordion__content">
+                        <p><?= get_sub_field('answer'); ?></p>
+                      </div>
+                    </li>
+
+
+              <?php endwhile;?>
+                    </ul>
+                  </div>
+            <?php endif;?>
+                    </div>
+                  </div>
+
+                      <?php endif;
+                            endwhile;
+                            else :
+
+                                alert('no flexible found');
+
+                            endif;
+                          endif;
+                        endwhile;
+                      endif;
+                            ?>
+
+    </div>
+  </div>

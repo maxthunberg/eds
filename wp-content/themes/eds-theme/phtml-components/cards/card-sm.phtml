@@ -12,10 +12,15 @@
       <div class="card-content card-half">
         <div class="text-container">
 
-          <?php if ($post->post_parent == 86) :?>
-          <h3><?php echo the_title();?></h3>
+        <?php if ($page_for_posts == 13):
+              foreach((get_the_category()) as $category) {
+                 echo "<h5>" . $category->name . "</h5>";
+              }?>
+
+                <h3><?php echo the_title();?></h3>
+
         <?php else :?>
-          <h3 class="card-learn"><?php echo the_title();?></h3>
+            <h3 class="card-learn"><?php echo the_title();?></h3>
         <?php endif;?>
 
         </div>

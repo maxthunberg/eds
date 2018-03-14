@@ -26,6 +26,8 @@
 
   <?php include( get_template_directory() . '/phtml-components/sidenav/sidenav.phtml');?>
 
+  <?php include( get_template_directory() . '/phtml-components/modal/modal.phtml');?>
+
 
   <?php include( get_template_directory() . '/phtml-components/preloader/preloader.phtml');?>
   <div class="content hide">

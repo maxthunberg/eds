@@ -1,36 +1,65 @@
-<div class="services bg-02 section-default">
+<?php
 
-  <div class="bx--grid">
-    <div class="bx--row section-center--col">
-      <h6 class="revealer-0"><?php the_field('services_subheading');?></h6>
-      <h3 class="bx--type-beta revealer-100"><?php the_field('services_heading');?></h3>
-    </div>
-  </div>
+// vars
+$services = get_field('our_services');
 
-    <div class="bx--grid">
-      <div class="bx--row">
-        <?php
-        $args = array(
-            'post_parent' => 86,
-            'post_type' => 'page',
-            'orderby' => 'menu_order',
-            'posts_per_page' => 3
-        );
+if( $services ): ?>
+<div class="bx--grid section-default">
 
-        $child_query = new WP_Query( $args );
-        ?>
-
-        <?php while ( $child_query->have_posts() ) : $child_query->the_post();
-
-            include( get_template_directory() . '/phtml-components/cards/card-lg.phtml');
-
-        endwhile; ?>
-
-        <?php
-        wp_reset_postdata();?>
-
+      <div class="bx--row section-center--col">
+        <h6 class="revealer-0"><?= $services['subheading']; ?></h6>
+        <h3 class="bx--type-beta revealer-100"><?= $services['heading']; ?></h3>
       </div>
 
-    </div>
 
+<?php endif; ?>
+
+<?php
+
+$posts = get_field('service_cards');
+
+if( $posts ): ?>
+
+
+  <div class="bx--row">
+    <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+        <?php setup_postdata($post);
+
+              $serviceurl = $post->post_name;?>
+
+
+
+          <div class="bx--col-xs-12 revealer-100">
+
+              <a class="card-link" href="<?= the_permalink(86) . '#' . $serviceurl ?>">
+
+                <div class="card-lg interactive">
+
+                    <div class="card-img image card-half">
+                      <div class="img-container">
+                        <img class="featured-image" src="<?php the_post_thumbnail_url(); ?>"/>
+                      </div>
+                    </div>
+
+                    <div class="card-content card-half">
+                      <div class="text-container">
+                        <h3><?= the_title();?></h3>
+                        <p><?= excerpt(30);?></p>
+                      </div>
+                      <div class="btn-container">
+                        <button class="bx--btn bx--btn--primary" type="button">Read More</button>
+                      </div>
+
+                    </div>
+
+                </div>
+
+              </a>
+
+          </div>
+    <?php endforeach; ?>
+        </div>
 </div>
+
+    <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+<?php endif; ?>

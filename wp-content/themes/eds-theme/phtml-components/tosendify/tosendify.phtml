@@ -1,14 +1,20 @@
+<?php
+
+// vars
+$sendify = get_field('sendify_section', 'option');
+
+if( $sendify ): ?>
+
 <div class="sendify">
   <div class="sendify-container">
     <div class="sendify-text">
-      <h4 class="bx--type-gamma"><?php the_field('sendify_cta_heading', 'option');?></h4>
-      <p class="bx--type-epsilon">
-        <?php the_field('sendify_cta_paragraf', 'option');?>
-      </p>
+      <h4 class="bx--type-gamma"><?php echo $sendify['heading']; ?></h4>
+      <p class="bx--type-epsilon"><?php echo $sendify['paragraph']; ?></p>
     </div>
 
-    <a href="https://www.sendify.se" target="_blank"><button class="bx--btn bx--btn--secondary-white" type="button"><?php the_field('sendify_btn_label', 'option');?></button></a>
+    <a href="https://www.sendify.se" target="_blank"><button class="bx--btn bx--btn--secondary-white" type="button"><?php echo $sendify['btn_label']; ?></button></a>
 
   </div>
 
 </div>
+<?php endif; ?>

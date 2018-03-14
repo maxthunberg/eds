@@ -1,34 +1,54 @@
-<div class="advantages bg-03 section-default">
+<?php if( have_rows('advantages') ): ?>
 
-  <div class="bx--grid">
-    <div class="bx--row section-center--col">
-      <h6 class="revealer-0"><?php the_field('advantages_subheading');?></h6>
-      <h2 class="revealer-100"><?php the_field('advantages_heading');?></h2>
-    </div>
-  </div>
+  <div class="bx--grid section-default bg-03">
+    <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 section-1col"><h3 class="bx--type-beta"><?= get_sub_field('heading'); ?></h3></div>
+  <div class="bx--row">
 
-    <div class="bx--grid">
-      <div class="bx--row">
-
+	<?php while( have_rows('advantages') ): the_row();?>
         <?php
-        $file = get_template_directory() . '/phtml-components/cards/card-sm--inactive.phtml';
-        $theHeading = array('advantage_one_heading', 'advantage_two_heading', 'advantage_three_heading');
-        $theParagraf = array('advantage_one_paragraf', 'advantage_two_paragraf', 'advantage_three_paragraf');
-        $theImage = array('advantage_one_image', 'advantage_two_image', 'advantage_three_image');
+
+      // check if the repeater field has rows of data
+      if( have_rows('cards') ):
+
+       	// loop through the rows of data
+          while ( have_rows('cards') ) : the_row();
+          ?>
+
+              <div class="bx--col-xs-12 bx--col-md-6 bx--col-lg-4 section-3col--card">
+
+              <div class="card-sm">
+                    <div class="card-img image card-half">
+                      <div class="img-container--icon">
+                          <img class="icon" alt="<?= get_sub_field('alt_text');?>" src="<?= get_sub_field('icon');?>"/>
+                          <div class="overlay"></div>
+                      </div>
+                    </div>
+
+                    <div class="card-content card-half">
+                      <div class="text-container">
+                        <h3><?= get_sub_field('sub-heading');?></h3>
+                        <p><?= get_sub_field('paragraph');?></p>
+                      </div>
+                    </div>
+                </div>
+              </div>
 
 
-        function includeAdvantage($file, $theHeading, $theParagraf, $theImage) {
-            include($file);
-        }
+        <?php  endwhile;
 
-        echo includeAdvantage($file, $theHeading[0], $theParagraf[0], $theImage[0]);
-        echo includeAdvantage($file, $theHeading[1], $theParagraf[1], $theImage[1]);
-        echo includeAdvantage($file, $theHeading[2], $theParagraf[2], $theImage[2]);
+      else :
 
-        ?>
+          // no rows found
 
-      </div>
+      endif;
 
-    </div>
+      ?>
 
+
+	<?php endwhile; ?>
+
+
+
+<?php endif; ?>
+</div>
 </div>

@@ -1,0 +1,19 @@
+<?php
+
+// vars
+$quote = get_field('quote');
+
+if( $quote ): ?>
+  <div class="quote--fullwidth section">
+    <div class="bx--grid">
+        <div class="bx--row">
+            <div class="bx--col-xs-12 quote-content">
+
+              <h4 class="quote">”<?php echo $quote['quote_text']; ?>”</h4>
+              <h5 class="author">-<?php echo $quote['quote_author'];?></h5>
+
+            </div>
+        </div>
+    </div>
+  </div>
+<?php endif; ?>

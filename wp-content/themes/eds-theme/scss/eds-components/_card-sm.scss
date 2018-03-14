@@ -5,6 +5,7 @@
   box-shadow: $box-shadow--raised;
   background-color: $color__white;
   padding: 0;
+  height: 100%;
 
   .card-half {
     display: flex;
@@ -57,27 +58,6 @@
   }
 
 }
-
-
-// .card-sm.interactive {
-//
-//   .card-content {
-//
-//     .text-container {
-//       margin-bottom: 0;
-//
-//       h3 {
-//         margin-bottom: .5rem;
-//       }
-//       p {
-//         color: $brand-02;
-//       }
-//
-//     }
-//
-//   }
-//
-// }
 
 .img-container {
   width: 100%;

@@ -6,14 +6,14 @@ img {
  user-select: none!important;
 }
 
-// Preload images
-.preload-image--transportation::after {
-content:
-url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-road.jpg)
-url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-air.jpg)
-url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-courier.jpg);
-display: none;
+::selection {
+  background: $ui-04;
 }
+::-moz-selection {
+  background: $ui-04;
+}
+
+
 .preload-image--industry::after {
 content:
 url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-automotive.jpg)
@@ -22,7 +22,10 @@ url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-healthcare
 url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-hightech.jpg)
 url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-industrial.jpg)
 url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-maritime.jpg)
-url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-passportvisa.jpg);
+url(http://localhost:8888/wp-content/themes/eds-theme/images/industry-passportvisa.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-road.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-air.jpg)
+url(http://localhost:8888/wp-content/themes/eds-theme/images/dedicated-courier.jpg);
 display: none;
 }
 
@@ -219,7 +222,6 @@ a {
 
 .contactform {
   h4 {
-    text-align: center;
     margin-bottom: rem(32px);
   }
   form {
@@ -238,6 +240,50 @@ a {
     align-items: center;
     flex-direction: column;
   }
+  h4 {
+    margin-bottom: rem(16px);
+  }
+}
+
+.iti-mobile .intl-tel-input.iti-container {
+  z-index: 9999!important;
+}
+.intl-tel-input .country-list .country {
+  padding:.5rem!important;
+  position: relative!important;
+  z-index: 9001!important;
+}
+
+.intl-tel-input .country-list .country.highlight{
+  background-color: $ui-02!important;
+}
+
+.iti-mobile > .intl-tel-input .country-list {
+  box-shadow: $box-shadow--pop-out!important;
+}
+
+.intl-tel-input .country-list {
+  border: none!important;
+  z-index: 9000!important;
+  min-width: rem(256px)!important;
+}
+
+.iti-flag {
+  background-color: $brand-02!important;
+}
+
+
+.bx--modal.selected {
+  opacity: 1;
+  visibility: visible;
+  z-index: 8000;
+  position: fixed;
+  transition: $transition-default;
+  .bx--modal-container {
+    z-index: 8001;
+    position: fixed;
+  }
+
 }
 
 

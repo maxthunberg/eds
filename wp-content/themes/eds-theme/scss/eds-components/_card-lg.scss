@@ -11,11 +11,6 @@
     box-shadow: $box-shadow--pop-out;
     transition: $transition-default;
   }
-  &:active {
-    box-shadow: $box-shadow--sticky-nav;
-    box-shadow: $box-shadow--overlay;
-    transition: $transition-default;
-  }
 }
 
 .card-lg {

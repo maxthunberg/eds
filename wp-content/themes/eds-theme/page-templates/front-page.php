@@ -28,7 +28,7 @@
 <?php include( get_template_directory() . '/phtml-components/countries/countries.phtml');?>
 
 <!-- QUOTE Fullwidth -->
-<?php include( get_template_directory() . '/phtml-components/quote/quote--fullwidth.phtml');?>
+<?php include( get_template_directory() . '/phtml-components/quote/quote.phtml');?>
 
 <!-- Contact Form -->
 <?php include( get_template_directory() . '/phtml-components/contact-form/contact-form.phtml');?>

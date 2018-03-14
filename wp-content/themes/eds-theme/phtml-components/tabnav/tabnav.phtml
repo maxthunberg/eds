@@ -11,7 +11,13 @@
     }
 
     if( $terms ): ?>
-    <nav data-tabs class="bx--tabs tabnav" role="navigation">
+    <?php if ( get_the_ID() == 517 ):?>
+      <nav data-tabs class="bx--tabs tabnav industry" role="navigation">
+    <?php elseif ( get_the_ID() == 86 ):?>
+      <nav data-tabs class="bx--tabs tabnav transport" role="navigation">
+    <?php else:?>
+      <nav data-tabs class="bx--tabs tabnav" role="navigation">
+    <?php endif;?>
       <div class="bx--tabs-trigger" tabindex="0">
         <a href="javascript:void(0)" class="bx--tabs-trigger-text" tabindex="-1"></a>
         <svg width="10" height="5" viewBox="0 0 10 5" fill-rule="evenodd">
@@ -33,10 +39,20 @@
           }
 
           $number = ++$i;?>
+          <?php if ( get_the_ID() == 517 ):?>
+            <li id="tab-<?= $number;?>" class="bx--tabs__nav-item" data-target=".tab-<?= $number;?>" role="presentation">
+              <a id="tab-link-<?= $number;?>" class="bx--tabs__nav-link" href="<?= '#'.$href;?>" role="tab" aria-controls="tab-panel-<?= $number;?>" aria-selected="true" hidden><?= $name ?></a>
+            </li>
+          <?php elseif ( get_the_ID() == 86 ):?>
+            <li id="trans-tab-<?= $number;?>" class="bx--tabs__nav-item" data-target=".tab-<?= $number;?>" role="presentation">
+              <a id="tab-link-<?= $number;?>" class="bx--tabs__nav-link" href="<?= '#'.$href;?>" role="tab" aria-controls="tab-panel-<?= $number;?>" aria-selected="true" hidden><?= $name ?></a>
+            </li>
+          <?php else:?>
+            <li id="tab-<?= $number;?>" class="bx--tabs__nav-item" data-target=".tab-<?= $number;?>" role="presentation">
+              <a id="tab-link-<?= $number;?>" class="bx--tabs__nav-link" href="<?= '#'.$href;?>" role="tab" aria-controls="tab-panel-<?= $number;?>" aria-selected="true" hidden><?= $name ?></a>
+            </li>
+          <?php endif;?>
 
-        <li id="tab-<?= $number;?>" class="bx--tabs__nav-item" data-target=".tab-<?= $number;?>" role="presentation">
-          <a id="tab-link-<?= $number;?>" class="bx--tabs__nav-link" href="<?= '#'.$href;?>" role="tab" aria-controls="tab-panel-<?= $number;?>" aria-selected="false"><?= $name ?></a>
-        </li>
 
   <?php endforeach;
         endif;?>

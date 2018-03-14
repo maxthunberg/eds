@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+$page_for_posts = get_option('page_for_posts');
+
 // Register Services custom post type.
 require get_template_directory().'/post-types/service.php';
 require get_template_directory().'/post-types/faq.php';
@@ -33,9 +35,12 @@ add_action( 'init', 'pages_add_post_type_support', 10 );
 // Add scripts and styles
 add_action('wp_enqueue_scripts', function () {
 
+    wp_enqueue_style( 'swiper', get_template_directory_uri() . '/scss/swiper.min.css',false,'1.1','all');
+
+    wp_enqueue_style( 'style', get_template_directory_uri() . '/scss/globals/style.css',false,'1.1','all');
+
     wp_deregister_script('jquery');
     wp_register_script('jquery', 'https://code.jquery.com/jquery-3.3.1.min.js', '', '', true);
-    // wp_register_script('jquery', get_template_directory_uri() . '/js/jquery-3.2.1.js', '', '', true);
     wp_enqueue_script('jquery');
 
     wp_register_script('scrollreveal', get_template_directory_uri() . '/js/scrollreveal.min.js', '','', true);
@@ -44,16 +49,11 @@ add_action('wp_enqueue_scripts', function () {
     wp_register_script('swiper', get_template_directory_uri() . '/js/swiper.min.js', '','', true);
     wp_enqueue_script('swiper');
 
-    wp_enqueue_style( 'swiper', get_template_directory_uri() . '/scss/swiper.min.css',false,'1.1','all');
-
-    wp_enqueue_style( 'style', get_template_directory_uri() . '/scss/globals/style.css',false,'1.1','all');
-
-    wp_register_script('script', get_template_directory_uri() . '/js/script.js', '','', true);
-    wp_enqueue_script('script');
-
     wp_register_script('carbon-js', get_template_directory_uri() . '/js/carbon-components.min.js', '','', true);
     wp_enqueue_script('carbon-js');
 
+    wp_register_script('script', get_template_directory_uri() . '/js/script.js', '','', true);
+    wp_enqueue_script('script');
 
 });
 
@@ -296,7 +296,29 @@ function df_disable_comments_admin_bar() {
 add_action('init', 'df_disable_comments_admin_bar');
 
 
-
+// set and get number of post viewOffset
+function getPostViews($postID){
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 View";
+    }
+    return $count.' Views';
+}
+function setPostViews($postID) {
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
 
 // Use posts post type as LEARN
 

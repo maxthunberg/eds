@@ -1,14 +1,13 @@
-<div class="hero hero-sm" title="<?=$title_hero_img?>" style="background-image: url(
+<div class="hero hero-sm" style="background-image: url(
   <?php if ( is_page(20) ) {
             echo get_field('hero_image');
 
         } elseif ( is_home() ) { // Learn without latest post as bg image
-          // $bg_thumbnail = get_the_post_thumbnail_url(get_the_ID(),'full');
-          // echo $bg_thumbnail;
+            echo get_field('hero_image',get_option('page_for_posts'));
 
         } else { // Posts get thumbnail image as bg image
-          $bg_thumbnail = get_the_post_thumbnail_url(get_the_ID(),'full');
-          echo $bg_thumbnail;
+            $bg_thumbnail = get_the_post_thumbnail_url(get_the_ID(),'full');
+            echo $bg_thumbnail;
         }
       ?>
 
@@ -25,6 +24,7 @@
           <?php if ( get_the_ID() == 86 ) {
 
                 } elseif ( is_home() ) {
+                  echo get_field('hero_heading',get_option('page_for_posts'));
 
                 } else {
                   echo esc_html( get_the_title() );

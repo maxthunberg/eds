@@ -6,8 +6,10 @@ Template Name: Single Template
 
 
 get_header();
+
+setPostViews(get_the_ID());
 ?>
-<progress value="0" id="progressBar">
+<progress value="0" id="progressBar" class="flat">
   <div class="progress-container">
     <span class="progress-bar"></span>
   </div>
@@ -31,6 +33,7 @@ get_header();
                     </h4>
                   </div>
                 </div>
+
                 <div class="bx--col-xs-12 bx--col-sm-4 section-3col">
                   <div class="col--flexcenter cities">
                     <h6 class="bx-type-zeta revealer-0">AUTHOR</h6>
@@ -43,6 +46,7 @@ get_header();
                   </h4>
                   </div>
                 </div>
+
                 <div class="bx--col-xs-12 bx--col-sm-4 section-3col">
                   <div class="col--flexcenter cities">
                     <h6 class="revealer-0">PUBLISHED</h6>
@@ -53,17 +57,68 @@ get_header();
             </div>
 
             <!--CONTENT -->
-            <div class="bx--grid section-default">
-              <div class="bx--row row--center">
-                <div class="bx--col-xs-12 bx--col-md-8 bx--col-lg-6 section-1col wysiwyg">
-                  <?php
-                  while(have_posts()) : the_post(); ?>
-                    <?php the_field('wysiwyg_post');?>
-                  <?php endwhile; ?>
-                </div>
-              </div>
-            </div>
+            <div class="bx--grid bg-02 section-4rem post-container">
+              <div class="bx--row post-content">
 
+            <?php
+            // check if the flexible content field has rows of data
+            if( have_rows('flexible_content') ):
+
+                 // loop through the rows of data
+                while ( have_rows('flexible_content') ) : the_row();
+
+                    if( get_row_layout() == 'ingress' ):?>
+                      <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 ingress">
+                        <p><?= the_sub_field('paragraph', false, false);?><p>
+                      </div>
+
+                    <?php elseif( get_row_layout() == 'h2_section' ):?>
+
+                      <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 h2-section">
+                        <h2 class="bx--type-gamma"><?= the_sub_field('heading');?></h2>
+                        <?= the_sub_field('paragraph');?>
+                      </div>
+
+                    <?php elseif( get_row_layout() == 'h3_section' ):?>
+
+                      <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 h3-section">
+                        <h3 class="bx--type-gamma"><?= the_sub_field('heading');?></h3>
+                        <?= the_sub_field('paragraph');?>
+                      </div>
+
+                    <?php elseif( get_row_layout() == 'image' ):?>
+
+                      <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 image">
+                        <img alt="<?= the_sub_field('alt_text');?>" src="<?= the_sub_field('image');?>"/>
+                        <p class="bx--type-caption"><?= the_sub_field('caption');?></p>
+                      </div>
+
+                    <?php elseif( get_row_layout() == 'special_section' ):?>
+
+                      <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 special-section">
+                        <?= the_sub_field('text_editor');?>
+                      </div>
+
+                    <?php elseif( get_row_layout() == 'soft_cta' ):?>
+                      <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 soft-cta">
+                        <img class="" alt="<?= the_sub_field('alt') ?>"<?= the_sub_field('image');?>/>
+                      <p><?= the_sub_field('text');?></p>
+                      <a href="<?= the_sub_field('link');?>"><?= the_sub_field('label');?></a>
+                      </div>
+
+                    <?php endif;
+
+                endwhile;
+
+            else :
+
+                // no layouts found
+
+            endif;
+
+            ?>
+            </div>
+          </div>
             <!--OTHER ARTICLES-->
             <div class="services bg-03 section-default">
               <div class="bx--col-xs-12 bx--col-md-12 bx--col-lg-12 section-1col"><h3 class="bx--type-beta">You might also like</h3></div>
